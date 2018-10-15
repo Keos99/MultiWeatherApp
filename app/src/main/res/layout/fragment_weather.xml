@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/detailsElementBackground">
+
+    <TextView
+        android:id="@+id/tv_greeting"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="greeting"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/city"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_greeting"
+            app:layout_constraintLeft_toLeftOf="@id/tv_greeting"/>
+
+
+    <TextView
+        android:id="@+id/tv_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:layout_marginTop="8dp"
+        style="@style/TemperatureText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/tv_labletemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/tv_temperature"
+        app:layout_constraintLeft_toLeftOf="@id/tv_temperature"
+        app:layout_constraintRight_toRightOf="@id/tv_temperature"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_degLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_temperature"
+        android:text="@string/degre"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_temperature"
+        app:layout_constraintRight_toRightOf="@id/tv_temperature"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Pressure"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_pressure"
+        app:layout_constraintTop_toBottomOf="@id/tv_pressure"
+        app:layout_constraintRight_toRightOf="@id/tv_pressure"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="20dp"
+        style="@style/TemperatureText"
+        app:layout_constraintRight_toLeftOf="@+id/tv_degLabel"
+        app:layout_constraintTop_toTopOf="@+id/tv_degLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_degLabel"
+        />
+
+    <TextView
+        android:id="@+id/tv_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="20dp"
+        style="@style/TemperatureText"
+        app:layout_constraintLeft_toRightOf="@+id/tv_labletemperature"
+        app:layout_constraintTop_toTopOf="@+id/tv_labletemperature"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_labletemperature"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сила ветра"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_wind"
+        app:layout_constraintBottom_toTopOf="@id/tv_wind"
+        app:layout_constraintRight_toRightOf="@id/tv_wind"
+        android:textSize="18sp" />
+
+</android.support.constraint.ConstraintLayout>

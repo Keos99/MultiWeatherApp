@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_temperaturesensor_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_temperaturesensor_number"
+        app:layout_constraintRight_toRightOf="@id/tv_temperaturesensor_number"
+        app:layout_constraintBottom_toTopOf="@id/tv_temperaturesensor_number"
+        android:text="@string/tv_temperaturesensor"
+        />
+    <TextView
+        android:id="@+id/tv_temperaturesensor_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintRight_toRightOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintBottom_toTopOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/SensorTextNumbers"
+        android:text="@string/tv_temperaturesensor_number"
+        />
+    <TextView
+        android:id="@+id/tv_temperature_sensoe_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Датчик температуры"
+        />
+    <TextView
+        android:id="@+id/tv_humidity_sensor_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Датчик влажности"
+
+        />
+    <TextView
+        android:id="@+id/tv_humidity_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintLeft_toLeftOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintBottom_toTopOf="@id/tv_humidity_number"
+        android:text="@string/tv_humidity_text"
+        />
+    <TextView
+        android:id="@+id/tv_humidity_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_temperature_sensoe_status"
+        app:layout_constraintLeft_toLeftOf="@id/tv_humidity_text"
+        app:layout_constraintRight_toRightOf="@id/tv_humidity_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/SensorTextNumbers"
+        android:text="@string/tv_humidity_number"
+        />
+
+</android.support.constraint.ConstraintLayout>

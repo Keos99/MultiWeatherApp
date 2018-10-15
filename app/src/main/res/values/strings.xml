@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">android 2_5</string>
+    <string name="city">Город</string>
+    <string name="name">Имя</string>
+    <string name="temperature">Температура</string>
+    <string name="degre">градусов</string>
+
+    <string name="afternoon">Добрый день</string>
+    <string name="morning">Доброе утро</string>
+    <string name="evening">Добрый вечер</string>
+    <string name="night">Доброй ночи</string>
+    <string name="edit">Редактировать</string>
+    <string name="click_one_more_time_to_exit">Нажмите еще раз для выхода</string>
+    <string name="empty">пусто</string>
+    <string name="change_name">Сменить имя</string>
+    <string name="CNFname">Новое имя</string>
+    <string name="Pressure">Давление</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="nav_about_programmer">О разработчике</string>
+    <string name="nav_feedback">Обратная связь</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="tv_temperaturesensor">Показания датчика температуры.</string>
+    <string name="tv_temperaturesensor_number">00</string>
+    <string name="tv_humidity_text">Показания датчика влажности</string>
+    <string name="tv_humidity_number">00</string>
+    <string name="menu_sensors">Сенсоры</string>
+
+    <string name="tv_setting_standart_namecity">Значения по умолчанию:</string>
+    <string name="button_ok">ОК</string>
+    <string name="settings">settings</string>
+
+
+</resources>
