@@ -28,7 +28,8 @@ public class CitiesRVAdapter extends RecyclerView.Adapter<CitiesRVAdapter.VievHo
     @NonNull
     @Override
     public VievHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int vievtype) {
-       View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cities_rv_adapter,viewGroup,false);
+       View view = LayoutInflater.from(viewGroup.getContext()).inflate(
+               R.layout.item_cities_rv_adapter,viewGroup,false);
        VievHolder vievHolder = new VievHolder(view);
        return vievHolder;
     }

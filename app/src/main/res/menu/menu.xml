@@ -11,4 +11,9 @@
         android:icon="@mipmap/ic_launcher"
         android:title="@string/menu_sensors">
     </item>
+    <item
+        android:id="@+id/menu_gps"
+        android:icon="@mipmap/ic_launcher"
+        android:title="@string/menu_gps">
+    </item>
 </menu>

@@ -1,10 +1,13 @@
 package ru.geekbrains.multiweather.fragments;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,26 +15,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ru.geekbrains.multiweather.CitiesRVAdapter;
+import ru.geekbrains.multiweather.DeviceLocation;
 import ru.geekbrains.multiweather.ListItem;
 import ru.geekbrains.multiweather.R;
 
-public class CitiesFragment extends Fragment {
+public class CitiesFragment extends Fragment implements ActivityCompat.OnRequestPermissionsResultCallback {
 
     private RecyclerView recyclerView;
     private CitiesRVAdapter citiesRVAdapter;
     private SharedPreferences sharedPreferencesSettings;
     private SharedPreferences.Editor sharedPreferencesEditor;
+    private DeviceLocation deviceLocation;
+    private static final int PERMISSION_REQUEST_CODE = 10;
 
     public static Fragment newInstance(){
         CitiesFragment fragment = new CitiesFragment();
-        //Bundle args = new Bundle();
-        //args.putString("name", name);
-        //fragment.setArguments(args);
         return fragment;
     }
 
@@ -46,9 +50,11 @@ public class CitiesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        deviceLocation = new DeviceLocation(getContext(),getActivity());
+        deviceLocation.locationListener();
         sharedPreferencesSettings = getActivity().getSharedPreferences("Settings",Context.MODE_PRIVATE);
         sharedPreferencesEditor = sharedPreferencesSettings.edit();
-        settingsLoad();
+        defineCity();
         View view = inflater.inflate(R.layout.fragment_cities, null);
         recyclerView = view.findViewById(R.id.rv_cities);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -62,6 +68,45 @@ public class CitiesFragment extends Fragment {
         recyclerView.setAdapter(citiesRVAdapter);
         isMasterDetail = getActivity().findViewById(R.id.fl_master) != null;
         return view;
+    }
+
+    public void defineCity(){
+        if (haveSavedSettings()){
+            settingsLoad();
+        } else {
+            if (deviceLocation.isHavePremision()){
+                deviceLocation.requestLocation();
+                Toast.makeText(getContext(),deviceLocation.getCity(),Toast.LENGTH_LONG);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fl_master,
+                        WeatherFragment.newInstance(deviceLocation.getCity())).commit();
+            } else {
+                requestLocationPermissions();
+            }
+        }
+    }
+
+    private void requestLocationPermissions() {
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                Manifest.permission.CALL_PHONE)) {
+            ActivityCompat.requestPermissions(getActivity(),
+                    new String[]{
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    },
+                    PERMISSION_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[]
+            permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length == 2 &&
+                    (grantResults[0] == PackageManager.PERMISSION_GRANTED ||
+                            grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
+                deviceLocation.requestLocation();
+            }
+        }
     }
 
     private List<ListItem> createList(){

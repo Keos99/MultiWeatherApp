@@ -16,7 +16,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import ru.geekbrains.multiweather.GreetingBuilder;
 import ru.geekbrains.multiweather.GreetingStrings;
-import ru.geekbrains.multiweather.OpenWeather;
+import ru.geekbrains.multiweather.model.OpenWeather;
 import ru.geekbrains.multiweather.R;
 import ru.geekbrains.multiweather.TemperatureColors;
 import ru.geekbrains.multiweather.model.WeatherRequest;

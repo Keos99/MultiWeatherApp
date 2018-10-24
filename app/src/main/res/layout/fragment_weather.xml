@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/tv_greeting"
-        android:layout_width="150dp"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="greeting"
@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/tv_city"
-            android:layout_width="150dp"
+            android:layout_width="150sp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/city"

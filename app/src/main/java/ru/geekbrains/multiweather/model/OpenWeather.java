@@ -1,4 +1,4 @@
-package ru.geekbrains.multiweather;
+package ru.geekbrains.multiweather.model;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

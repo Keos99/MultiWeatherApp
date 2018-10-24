@@ -12,16 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import ru.geekbrains.multiweather.R;
+import ru.geekbrains.multiweather.bd.CitiesDataReader;
+import ru.geekbrains.multiweather.bd.CitiesDataSource;
 
 public class SettingsFragment extends Fragment {
 
-    private EditText etSettingsName;
     private EditText etSettingsCity;
     private Button button;
     private SharedPreferences settings;
     private SharedPreferences.Editor sharedPreferencesEditor;
     private String city;
+    private CitiesDataSource citiesDataSource;
 
     public static Fragment newInstance (){
         SettingsFragment settingsFragment = new SettingsFragment();
@@ -32,11 +36,11 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings,null);
-        etSettingsName = view.findViewById(R.id.et_settings_name);
         etSettingsCity = view.findViewById(R.id.et_settings_city);
         button = view.findViewById(R.id.b_settings);
         settings = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
         sharedPreferencesEditor = settings.edit();
+        citiesDataSource =  new CitiesDataSource(getActivity().getApplicationContext());
         buttonListener();
         return view;
     }
@@ -55,7 +59,14 @@ public class SettingsFragment extends Fragment {
 
     private void saveSettings(){
         city = etSettingsCity.getText().toString();
+        citiesDataSource.open();
+        citiesDataSource.addCity(city);
+        try {
+            citiesDataSource.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         sharedPreferencesEditor.putString("city",city).commit();
-        Toast.makeText(getActivity(), "Сохранено", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.Saved), Toast.LENGTH_SHORT).show();
     }
 }

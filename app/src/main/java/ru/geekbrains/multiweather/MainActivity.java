@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import ru.geekbrains.multiweather.bd.CitiesDataReader;
+import ru.geekbrains.multiweather.bd.CitiesDataSource;
 import ru.geekbrains.multiweather.fragments.CitiesFragment;
 import ru.geekbrains.multiweather.fragments.SensorsFragment;
 import ru.geekbrains.multiweather.fragments.SettingsFragment;
@@ -23,9 +25,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle toggle;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
-    public void getString(){
-    }
+    private CitiesDataSource citiesDataSource;
+    private CitiesDataReader citiesDataReader;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initDB();
 
         //if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 this.getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fl_master, SettingsFragment.newInstance())
                         .addToBackStack("SettingsFragment").commit();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -82,5 +86,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
        return true;
+    }
+
+    public void initDB (){
+        citiesDataSource = new CitiesDataSource(getApplicationContext());
+        citiesDataSource.open();
+        citiesDataReader = citiesDataSource.getCitiesDataReader();
+    }
+
+    public CitiesDataSource getCitiesDataSource() {
+        return citiesDataSource;
     }
 }

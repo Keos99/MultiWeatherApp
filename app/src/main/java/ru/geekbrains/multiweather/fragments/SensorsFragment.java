@@ -18,8 +18,7 @@ import ru.geekbrains.multiweather.TemperatureColors;
 
 public class SensorsFragment extends Fragment implements TemperatureColors {
 
-    public static Fragment newInstance()
-    {
+    public static Fragment newInstance() {
         SensorsFragment sensorsFragment = new SensorsFragment();
         return sensorsFragment;
     }

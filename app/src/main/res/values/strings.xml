@@ -30,6 +30,8 @@
     <string name="tv_setting_standart_namecity">Значения по умолчанию:</string>
     <string name="button_ok">ОК</string>
     <string name="settings">settings</string>
+    <string name="Saved">Сохранено</string>
+    <string name="menu_gps">GPS</string>
 
 
 </resources>
